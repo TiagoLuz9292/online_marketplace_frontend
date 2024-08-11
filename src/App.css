@@ -1,0 +1,145 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffd7a8;
+}
+
+.navbar {
+  margin-bottom: 50px;
+  background-color: #fff;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+button.btn-link.nav-link {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.navbar-nav .nav-item .nav-link {
+  margin-right: 1rem;
+}
+
+.ms-auto .btn {
+  margin-left: 0.5rem;
+}
+
+.form-control::placeholder {
+  text-align: left; /* Center the text */
+  font-size: 25px; /* Increase font size */
+}
+
+.form-control {
+  padding-right: 20px; /* Adjust padding to push text to the right */
+}
+
+.container .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.container .col-md-4 {
+  flex: 0 0 80%; /* Make each card take up approximately 23% of the container width */
+  margin-bottom: 20px;
+}
+
+.card {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slightly lift the card on hover */
+}
+
+.card-img-top {
+  border-bottom: 1px solid #eaeaea;
+  padding: 15px;
+  height: 300px; /* Adjust this to match your desired image height */
+  object-fit: contain; /* Ensure the image is contained within the div */
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #555555;
+  margin-bottom: 10px;
+}
+
+.card-title, .card-text {
+  white-space: nowrap;       /* Prevents the text from wrapping to the next line */
+  overflow: hidden;          /* Hides the overflowed text */
+  text-overflow: ellipsis;   /* Adds "..." at the end of the truncated text */
+  width: 100%;               /* Ensures the element takes up the full width */
+  display: block;            /* Ensures the element is treated as a block */
+}
+
+.card .btn-danger {
+  margin-top: 10px;
+  width: 100%; /* Full width button */
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1280px; /* This ensures that at most 4 items of 300px fit in one row */
+  margin: 0 auto; /* Center the product list */
+}
+
+.product-item {
+  flex: 1 1 300px; /* The item will grow/shrink and have a base width of 300px */
+  max-width: 300px;
+  min-width: 250px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.product-list-container {
+  padding: 20px;
+  display: flex;
+}
+
+.sidebar {
+  width: 0px;
+  margin-right: 5px;
+}
+
+.search-bar-container {
+  margin-left: 100px;
+  position: relative;
+  width: 500px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+}
+
+.search-input {
+  border-radius: 10px;
+  padding-left: 40px; /* Make room for the search icon */
+  padding-right: 10px;
+  width: 100%;
+  background-color: #ffffff;
+}
