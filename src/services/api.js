@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = 'http://internal-alb-backend-413072816.eu-north-1.elb.amazonaws.com/api';
 
 
 const handleExpiredToken = () => {
