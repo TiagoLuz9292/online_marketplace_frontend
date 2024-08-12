@@ -7,6 +7,7 @@ import { login, register } from '../../services/api';
 const AuthModal = ({ isOpen, toggle }) => {
     const [isLogin, setIsLogin] = useState(true);
     const [formData, setFormData] = useState({
+        username: '',
         email: '',
         password: '',
         confirmPassword: ''
@@ -48,7 +49,11 @@ const AuthModal = ({ isOpen, toggle }) => {
             }
         } catch (err) {
             console.error(err);
-            setError(err.response ? err.response.data : 'An error occurred');
+            // Extract the error message
+            const errorMessage = err.response && err.response.data && err.response.data.message 
+                ? err.response.data.message 
+                : 'An error occurred';
+            setError(errorMessage);
         }
     };
 
@@ -58,6 +63,19 @@ const AuthModal = ({ isOpen, toggle }) => {
                 {isLogin ? 'Login' : 'Register'}
             </ModalHeader>
             <ModalBody>
+                {!isLogin && (
+                    <FormGroup>
+                        <Label for="username">Username</Label>
+                        <Input 
+                            type="text" 
+                            name="username" 
+                            id="username" 
+                            placeholder="Enter your username"
+                            value={formData.username}
+                            onChange={handleChange}
+                        />
+                    </FormGroup>
+                )}
                 <FormGroup>
                     <Label for="email">Email</Label>
                     <Input 

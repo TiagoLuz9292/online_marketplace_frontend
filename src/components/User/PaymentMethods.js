@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { getProfile, deletePaymentMethod } from '../../services/api'; // Add deletePaymentMethod
+import { getPaymentMethods, deletePaymentMethod } from '../../services/api';
 
 const PaymentMethods = () => {
     const [paymentMethods, setPaymentMethods] = useState([]);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        const fetchProfile = async () => {
+        const fetchPaymentMethods = async () => {
             try {
-                const profile = await getProfile();
-                setPaymentMethods(profile.paymentMethods || []);
+                const methods = await getPaymentMethods();
+                setPaymentMethods(methods);
             } catch (err) {
                 setError(err.response ? err.response.data : 'An error occurred while fetching payment methods');
             }
         };
 
-        fetchProfile();
+        fetchPaymentMethods();
     }, []);
 
     const handleDelete = async (method) => {
@@ -26,7 +26,7 @@ const PaymentMethods = () => {
                 paypalEmail: method.paypalEmail,
             };
             await deletePaymentMethod(data);
-            setPaymentMethods(paymentMethods.filter((m) => m !== method));
+            setPaymentMethods(paymentMethods.filter((m) => m.id !== method.id));
         } catch (err) {
             setError(err.response ? err.response.data : 'An error occurred while deleting the payment method');
         }
@@ -46,8 +46,8 @@ const PaymentMethods = () => {
                 <p>No payment methods available</p>
             ) : (
                 <ul className="list-group">
-                    {paymentMethods.map((method, index) => (
-                        <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                    {paymentMethods.map((method) => (
+                        <li key={method.id} className="list-group-item d-flex justify-content-between align-items-center">
                             {method.methodType === 'credit_card' ? (
                                 <div>
                                     <strong>Credit Card:</strong> {method.cardNumber} - Expires {method.expirationMonth}/{method.expirationYear}

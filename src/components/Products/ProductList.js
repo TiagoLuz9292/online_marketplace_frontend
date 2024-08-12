@@ -11,7 +11,7 @@ const ProductList = () => {
                 const products = await getProducts();
                 setProducts(products);
             } catch (err) {
-                setError(err.response ? err.response.data : 'An error occurred');
+                setError(err.response && err.response.data ? err.response.data.message : 'An error occurred');
             }
         };
 
@@ -22,17 +22,17 @@ const ProductList = () => {
         <div className="product-list-container">
             <div className="product-list">
                 {error && <p className="text-danger">{error}</p>}
-                    {products.map(product => (
-                        <div key={product._id} className="product-item">
-                            <div className="card">
-                                <img src={`http://localhost:3001${product.imageUrl}`} className="card-img-top" alt={product.name} />
-                                <div className="card-body">
-                                    <p className="card-text product-description">{product.description}</p>
-                                    <p className="card-text product-price">${product.price.toFixed(2)}</p>
-                                </div>
+                {products.map(product => (
+                    <div key={product.id} className="product-item">
+                        <div className="card">
+                            <img src={`http://localhost:3001${product.imageUrl}`} className="card-img-top" alt={product.name} />
+                            <div className="card-body">
+                                <p className="card-text product-description">{product.description}</p>
+                                <p className="card-text product-price">${product.price.toFixed(2)}</p>
                             </div>
                         </div>
-                    ))}
+                    </div>
+                ))}
             </div>
         </div>
     );

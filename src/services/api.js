@@ -165,3 +165,17 @@ export const deletePaymentMethod = async (paymentData) => {
         handleError(error);
     }
 };
+
+export const getPaymentMethods = async () => {
+    const token = localStorage.getItem('token');
+    try {
+        const response = await axios.get(`${API_URL}/users/profile/payment-method`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        return response.data;
+    } catch (error) {
+        handleError(error);
+    }
+};

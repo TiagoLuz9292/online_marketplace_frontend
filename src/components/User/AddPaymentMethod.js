@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { addPaymentMethod } from '../../services/api'; // You need to implement this function in api.js
+import { addPaymentMethod } from '../../services/api';
 
 const AddPaymentMethod = () => {
     const [methodType, setMethodType] = useState('');
@@ -19,22 +19,21 @@ const AddPaymentMethod = () => {
             expirationMonth: methodType === 'credit_card' ? expirationMonth : null,
             expirationYear: methodType === 'credit_card' ? expirationYear : null,
             cardName: methodType === 'credit_card' ? cardName : null,
-            cvv: methodType === 'credit_card' ? cvv : null,
+            cardSecret: methodType === 'credit_card' ? cvv : null,
         };
-    
+
         try {
-            await addPaymentMethod(methodData); // Removed the unused `response` variable
+            await addPaymentMethod(methodData);
             setMessage('Payment method added successfully');
         } catch (err) {
-            setMessage(err.response ? err.response.data : 'An error occurred');
+            setMessage(err.response ? err.response.data.message : 'An error occurred');
         }
     };
-    
 
     return (
         <div className="container mt-5">
             <h2>Add Payment Method</h2>
-            {message && <p className="mt-3">{message}</p>}
+            {message && <p className="mt-3 text-success">{message}</p>}
             <div className="mb-4">
                 <button 
                     className={`btn btn-outline-primary ${methodType === 'paypal' ? 'active' : ''}`} 

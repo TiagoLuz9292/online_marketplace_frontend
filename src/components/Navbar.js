@@ -56,7 +56,7 @@ const Navbar = () => {
                                 >
                                     <FaUserCircle size={30} />
                                 </DropdownToggle>
-                                <DropdownMenu right>
+                                <DropdownMenu end>
                                     <DropdownItem onClick={() => navigate('/my-products')}>My Products</DropdownItem>
                                     <DropdownItem onClick={() => navigate('/payment-methods')}>Payment Methods</DropdownItem>
                                     <DropdownItem onClick={() => navigate('/profile')}>Account Settings</DropdownItem>

@@ -32,7 +32,7 @@ const MyProducts = () => {
             <div className="product-list">
                 {error && <p className="text-danger">{error}</p>}
                     {products.map(product => (
-                        <div key={product._id} className="product-item">
+                        <div key={product.id} className="product-item">
                             <div className="card">
                                 <img src={`http://localhost:3001${product.imageUrl}`} className="card-img-top" alt={product.name} />
                                 <div className="card-body">
