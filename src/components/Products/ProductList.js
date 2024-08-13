@@ -25,7 +25,7 @@ const ProductList = () => {
                 {products.map(product => (
                     <div key={product.id} className="product-item">
                         <div className="card">
-                            <img src={`http://localhost:3001${product.imageUrl}`} className="card-img-top" alt={product.name} />
+                            <img src={`http://localhost:80${product.imageUrl}`} className="card-img-top" alt={product.name} />
                             <div className="card-body">
                                 <p className="card-text product-description">{product.description}</p>
                                 <p className="card-text product-price">${product.price.toFixed(2)}</p>
