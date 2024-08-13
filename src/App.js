@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react'; // Import useEffect here
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +18,19 @@ import AddPaymentMethod from './components/User/AddPaymentMethod';
 import './App.css';
 
 const App = () => {
+    useEffect(() => {
+        // Hardcoded test connection to the backend ALB health endpoint
+        fetch('http://localhost:80/health')
+            .then(response => response.text())
+            .then(data => {
+                console.log('Health check response:', data);
+                alert('Health check response: ' + data);
+            })
+            .catch(error => {
+                console.error('Error connecting to the backend ALB health endpoint:', error);
+                alert('Error connecting to the backend ALB health endpoint: ' + error);
+            });
+    }, []);
     return (
         <Router>
             <Navbar />

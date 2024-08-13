@@ -42,7 +42,10 @@ const AuthModal = ({ isOpen, toggle }) => {
                     setError('Passwords do not match');
                     return;
                 }
-                const response = await register(formData);
+
+                // Extract only the fields needed for registration
+                const { username, email, password } = formData;
+                const response = await register({ username, email, password });
                 toast.success(response.message || 'Registration successful');
                 toggle();
                 navigate('/login');
